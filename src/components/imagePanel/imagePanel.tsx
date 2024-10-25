@@ -1,9 +1,9 @@
 import React from 'react';
-import { PanelProps } from '@grafana/data';
+import { FieldType, PanelProps } from '@grafana/data';
 import { PanelOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { useStyles2} from '@grafana/ui';
-import { PanelDataErrorView } from '@grafana/runtime';
+//import { PanelDataErrorView } from '@grafana/runtime';
 import { Styles } from 'styles';
 
 /**
@@ -20,9 +20,16 @@ export const ImagePanel: React.FC<Props> = ({ options, data, width, height, fiel
   //const theme = useTheme2();
   const styles = useStyles2(Styles);
 
-  if (data.series.length === 0) {
-    return <PanelDataErrorView fieldConfig={fieldConfig} panelId={id} data={data} needsStringField />;
-  }
+  // if (data.series.length === 0) {
+  //   return <PanelDataErrorView fieldConfig={fieldConfig} panelId={id} data={data} needsStringField />;
+  // }
+
+  let src = data.series
+  .map((series) => {
+    series.fields.find((field) => field.type === FieldType.string && (!options.name || field.name === options.name)) 
+  })
+  //.map((field) => field?.values.get(field.values.length-1))
+  .toString()
 
   return (
     <div
@@ -38,7 +45,7 @@ export const ImagePanel: React.FC<Props> = ({ options, data, width, height, fiel
         className={styles.img}
         width={width}
         height={height}
-        src={options.url}
+        src={src}
         // xmlns="http://www.w3.org/2000/svg"
         // xmlnsXlink="http://www.w3.org/1999/xlink"
         // viewBox={`-${width / 2} -${height / 2} ${width} ${height}`}

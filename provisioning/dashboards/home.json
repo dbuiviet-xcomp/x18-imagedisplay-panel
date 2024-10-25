@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -38,7 +37,7 @@
         "seriesCountSize": "sm",
         "showSeriesCount": false,
         "text": "Default value of text input option",
-        "url": "https://"
+        "url": "https://github.com/VolkovLabs/.github/raw/main/honeycomb.png"
       },
       "targets": [
         {
@@ -100,6 +99,6 @@
   "timezone": "",
   "title": "Provisioned image_display dashboard",
   "uid": "a538aeff-5a8a-42a5-901c-938d896fdd6f",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
