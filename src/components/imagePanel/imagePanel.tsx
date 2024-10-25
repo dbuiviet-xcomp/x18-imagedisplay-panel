@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldType, PanelProps } from '@grafana/data';
+import { PanelProps } from '@grafana/data';
 import { PanelOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { useStyles2} from '@grafana/ui';
@@ -24,11 +24,10 @@ export const ImagePanel: React.FC<Props> = ({ options, data, width, height, fiel
   //   return <PanelDataErrorView fieldConfig={fieldConfig} panelId={id} data={data} needsStringField />;
   // }
 
-  let src = data.series
-  .map((series) => {
-    series.fields.find((field) => field.type === FieldType.string && (!options.name || field.name === options.name)) 
-  })
-  //.map((field) => field?.values.get(field.values.length-1))
+  const field = data.series
+  .map((series) => series.fields.find((field) => field.name === options.name))
+  // eslint-disable-next-line deprecation/deprecation
+  .map((field) => field?.values.get(field.values.length - 1))
   .toString()
 
   return (
@@ -45,7 +44,7 @@ export const ImagePanel: React.FC<Props> = ({ options, data, width, height, fiel
         className={styles.img}
         width={width}
         height={height}
-        src={src}
+        src={field}
         // xmlns="http://www.w3.org/2000/svg"
         // xmlnsXlink="http://www.w3.org/1999/xlink"
         // viewBox={`-${width / 2} -${height / 2} ${width} ${height}`}

@@ -23,8 +23,9 @@
   "panels": [
     {
       "datasource": {
-        "type": "grafana",
-        "uid": "grafana"
+        "default": false,
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
       },
       "gridPos": {
         "h": 8,
@@ -34,6 +35,7 @@
       },
       "id": 1,
       "options": {
+        "name": "URL",
         "seriesCountSize": "sm",
         "showSeriesCount": false,
         "text": "Default value of text input option",
@@ -42,10 +44,23 @@
       "targets": [
         {
           "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
           },
-          "queryType": "randomWalk",
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "URL",
+                "type": "string",
+                "values": [
+                  "https://github.com/VolkovLabs/.github/raw/main/honeycomb.png"
+                ]
+              }
+            ],
+            "meta": {},
+            "name": "Image URL"
+          },
           "refId": "A"
         }
       ],
